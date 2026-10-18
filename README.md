@@ -1,0 +1,576 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saucitouna | Benna majnouna !</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --olive:#c8cc88;
+  --dark:#30391e;
+  --green:#28502e;
+  --cream:#f8f4e8;
+  --red:#a52d37;
+  --gold:#c5a34c;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:#292b20;line-height:1.6}
+a{text-decoration:none;color:inherit}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.announcement{background:var(--dark);color:#fff4d6;text-align:center;padding:9px;font-size:13px}
+header{position:sticky;top:0;background:#f8f4e8f5;backdrop-filter:blur(10px);z-index:10;border-bottom:1px solid #dedcc7}
+nav{max-width:1150px;margin:auto;padding:14px 22px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{font-family:'Playfair Display',serif;font-size:25px;font-weight:bold;color:var(--dark)}
+.logo span{display:inline-grid;place-items:center;border:1px solid var(--dark);border-radius:50%;width:38px;height:38px;font-size:25px;font-style:italic;margin-right:8px}
+.navlinks{display:flex;gap:24px;font-size:14px;font-weight:700}
+.navlinks a:hover{color:var(--red)}
+.btn{display:inline-block;border:0;border-radius:30px;background:var(--green);color:white;padding:12px 21px;font-weight:bold;transition:.2s}
+.btn:hover{background:var(--dark);transform:translateY(-2px)}
+.hero{max-width:1150px;margin:auto;padding:65px 22px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:45px}
+.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:3px;color:var(--red);font-weight:bold;margin-bottom:15px}
+h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.15}
+h1{font-size:clamp(45px,6vw,75px);color:var(--dark);margin-bottom:20px}
+h1 em{color:var(--red);font-style:normal}
+.hero p{color:#5e604e;font-size:17px;margin-bottom:25px;max-width:490px}
+.hero img{width:100%;display:block;border-radius:22px;box-shadow:0 15px 40px #25271924}
+.hero-note{margin-top:20px;color:#62644f;font-size:13px}
+.ribbon{background:var(--green);color:#fff2d2;text-align:center;padding:15px;letter-spacing:2px;font-size:12px}
+section{padding:75px 22px}
+.container{max-width:1150px;margin:auto}
+.heading{text-align:center;max-width:650px;margin:0 auto 38px}
+.heading h2{font-size:clamp(32px,4vw,46px);color:var(--dark);margin-bottom:13px}
+.heading p{color:#696b5b}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:#fffdf6;border:1px solid #e7e0ca;border-radius:17px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+.card:hover{transform:translateY(-5px);box-shadow:0 12px 30px #24271916}
+.product-art{height:170px;display:grid;place-items:center}
+.art-green{background:#dce5c6}
+.art-gold{background:#f1dfab}
+.art-red{background:#efc8c5}
+.art-cream{background:#e9e6d8}
+.packet{width:95px;height:135px;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff0cb;background:linear-gradient(110deg,#193d22,#3f7040,#17391d);box-shadow:4px 6px 15px #0002;border:2px solid #ffffff66;text-align:center}
+.art-gold .packet{background:linear-gradient(110deg,#b28a35,#e8cb78,#a77c2c);color:#322c19}
+.art-red .packet{background:linear-gradient(110deg,#771d29,#c83c48,#7b1c29)}
+.art-cream .packet{background:linear-gradient(110deg,#d9d2bd,#fffdf0,#d2cbb5);color:#343523}
+.packet .monogram{font-family:'Playfair Display',serif;font-size:28px;font-style:italic;border-bottom:1px solid currentColor;padding:0 15px}
+.packet small{font-size:8px;margin-top:7px}
+.packet b{font-family:'Playfair Display',serif;font-size:12px;line-height:1.2;margin-top:8px}
+.card-content{padding:17px;display:flex;flex-direction:column;flex:1}
+.card h3{font-size:21px;margin-bottom:8px}
+.card p{font-size:13px;color:#696b5b;flex:1;margin-bottom:17px}
+.product-bottom{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.price{font-weight:bold;color:var(--green)}
+.add{width:38px;height:38px;border:0;border-radius:50%;background:var(--olive);color:var(--dark);font-size:25px}
+.add:hover{background:#e4cf80}
+.note{text-align:center;color:#777;font-size:12px;margin-top:18px}
+.story{background:#e9e9ca}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:45px}
+.story-logo{background:var(--olive);border-radius:20px;overflow:hidden}
+.story-logo img{width:100%;display:block;mix-blend-mode:multiply}
+.story-copy h2{font-size:clamp(32px,4vw,46px);color:var(--dark);margin-bottom:20px}
+.story-copy p{color:#5e604e;margin-bottom:15px}
+.pills{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.pills span{border:1px solid #b5b980;border-radius:25px;padding:7px 12px;font-size:12px;font-weight:bold}
+.reviews{background:#fffdf6}
+.review-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:start}
+.rating-box{background:var(--dark);color:#fff3d3;border-radius:20px;padding:28px}
+.rating-box h2{font-size:30px;margin-bottom:12px}
+.big-rating{font-family:'Playfair Display',serif;font-size:55px}
+.stars{color:#e4b83f;letter-spacing:2px;font-size:20px}
+.rating-box p{font-size:13px;color:#e1e3c7;margin-top:10px}
+.form-box{border:1px solid #e7e0ca;border-radius:20px;padding:25px}
+.form-box h3{font-size:27px;margin-bottom:20px}
+.field{margin-bottom:15px}
+.field label{display:block;font-size:13px;font-weight:bold;margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;border:1px solid #d9d5c1;border-radius:9px;background:#fffefa;padding:12px;outline-color:var(--gold)}
+.field textarea{min-height:95px;resize:vertical}
+.star-picker{display:flex;gap:7px;margin-bottom:18px}
+.star-picker button{border:0;background:none;color:#c9c5b8;font-size:34px;padding:0}
+.star-picker button.active{color:#e4b83f}
+.review-list{display:grid;gap:12px;margin-top:22px}
+.review-item{background:#f3f0e3;padding:15px;border-radius:12px}
+.review-top{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.review-item p{font-size:13px;margin-top:8px;white-space:pre-wrap;overflow-wrap:anywhere}
+.review-item small{font-size:11px;color:#777}
+.cta{background:var(--red);color:#fff3dd;text-align:center}
+.cta h2{font-size:clamp(32px,5vw,50px);margin-bottom:15px}
+.cta p{max-width:600px;margin:0 auto 23px;color:#f7ded6}
+.cta .btn{background:#f2e5b7;color:var(--dark)}
+footer{background:#202719;color:#eee8ca;padding:30px 22px}
+.footer-inner{max-width:1150px;margin:auto;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;align-items:center}
+footer small{color:#c5c7a9}
+.cart-panel{display:none;position:fixed;z-index:30;right:20px;top:90px;width:min(370px,calc(100% - 40px));max-height:75vh;overflow:auto;background:#fffdf6;border:1px solid #e1dbc5;border-radius:18px;padding:20px;box-shadow:0 15px 50px #0003}
+.cart-panel.open{display:block}
+.cart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+.cart-head h3{font-size:25px}
+.close-cart{border:0;background:none;font-size:25px}
+.cart-line{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid #e7e0ca;font-size:13px}
+.cart-total{display:flex;justify-content:space-between;font-weight:bold;margin:18px 0}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);background:var(--dark);color:white;padding:12px 20px;border-radius:30px;opacity:0;transition:.2s;z-index:50;pointer-events:none;text-align:center;width:max-content;max-width:90%}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:850px){
+ .hero{grid-template-columns:1fr;padding-top:40px}
+ .hero img{max-width:650px;margin:auto}
+ .products{grid-template-columns:repeat(2,1fr)}
+ .story-grid,.review-grid{grid-template-columns:1fr}
+ .story-logo{max-width:550px;margin:auto}
+}
+@media(max-width:580px){
+ nav{flex-wrap:wrap;padding:12px}
+ .logo{font-size:20px}
+ .navlinks{order:3;width:100%;justify-content:space-between;gap:8px;font-size:12px}
+ .cart-btn{padding:8px 12px!important;font-size:12px}
+ section{padding:55px 15px}
+ .hero{padding:38px 17px;gap:25px}
+ .hero p{font-size:15px}
+ .products{gap:10px}
+ .product-art{height:140px}
+ .packet{transform:scale(.9)}
+ .card-content{padding:12px}
+ .card h3{font-size:17px}
+ .card p{font-size:12px}
+ .price{font-size:13px}
+ .add{width:32px;height:32px}
+ .form-box,.rating-box{padding:20px}
+}
+</style>
+</head>
+<body>
+
+<div class="announcement">
+  🫒 L'inspiration tunisienne dans chaque bouchée — <b>Benna majnouna !</b>
+</div>
+
+<header>
+  <nav>
+    <a class="logo" href="#accueil"><span>S</span> SAUCITOUNA</a>
+    <div class="navlinks">
+      <a href="#produits">Nos sauces</a>
+      <a href="#histoire">Notre histoire</a>
+      <a href="#avis">Vos avis</a>
+    </div>
+    <button class="btn cart-btn" id="openCart">Panier (<span id="cartCount">0</span>)</button>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="accueil">
+  <div>
+    <div class="eyebrow">Une tradition, une nouvelle saveur</div>
+    <h1>Un petit stick.<br>Une grande <em>benna.</em></h1>
+    <p>
+      Découvre Saucitouna, des sauces gourmandes inspirées de la Tunisie,
+      avec notre fameux <b>zit zitouna</b> comme symbole de notre identité.
+      Nos saveurs donnent du caractère à chaque repas !
+    </p>
+    <a class="btn" href="#produits">Découvrir nos sauces →</a>
+    <div class="hero-note">🇹🇳 Inspiration tunisienne · 🫒 L'esprit zit zitouna · ❤️ Le plaisir de partager</div>
+  </div>
+  <div>
+    <img src="saucitouna-products.png"
+         alt="Collection de quatre sauces Saucitouna">
+  </div>
+</section>
+
+<div class="ribbon">
+  SAVEURS AUDACIEUSES ✦ INSPIRATION TUNISIENNE ✦ ZIT ZITOUNA ✦
+</div>
+
+<section id="produits">
+  <div class="container">
+    <div class="heading">
+      <div class="eyebrow">Notre collection</div>
+      <h2>Quelle sauce te ressemble ?</h2>
+      <p>Quatre personnalités, quatre façons de rendre ton repas encore plus gourmand.</p>
+    </div>
+
+    <div class="products">
+      <article class="card">
+        <div class="product-art art-green">
+          <div class="packet">
+            <div class="monogram">S</div><small>SAUCITOUNA</small>
+            <b>PESTO<br>GOURMET</b><small>ZIT ZITOUNA</small>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3>Pesto Gourmet</h3>
+          <p>Basilic, huile d'olive, parmesan et pignons de pin. Une touche fraîche et raffinée.</p>
+          <div class="product-bottom">
+            <span class="price">2,500 DT</span>
+            <button class="add" data-id="pesto" aria-label="Ajouter le pesto">+</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="product-art art-gold">
+          <div class="packet">
+            <div class="monogram">S</div><small>SAUCITOUNA</small>
+            <b>MOUTARDE<br>ARTISANALE</b><small>DOUCE & PIQUANTE</small>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3>Moutarde artisanale</h3>
+          <p>Une sauce pleine de caractère avec des graines de moutarde et une note acidulée.</p>
+          <div class="product-bottom">
+            <span class="price">2,000 DT</span>
+            <button class="add" data-id="moutarde" aria-label="Ajouter la moutarde">+</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="product-art art-red">
+          <div class="packet">
+            <div class="monogram">S</div><small>SAUCITOUNA</small>
+            <b>HARISSA<br>INTENSE</b><small>PIQUANT TUNISIEN</small>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3>Harissa intense</h3>
+          <p>Piments rouges, ail et épices : le goût relevé pour ceux qui aiment quand ça pique !</p>
+          <div class="product-bottom">
+            <span class="price">1,800 DT</span>
+            <button class="add" data-id="harissa" aria-label="Ajouter l'harissa">+</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="product-art art-cream">
+          <div class="packet">
+            <div class="monogram">S</div><small>SAUCITOUNA</small>
+            <b>CRÈME<br>D'AIL FUMÉ</b><small>DOUCE & ONCTUEUSE</small>
+          </div>
+        </div>
+        <div class="card-content">
+          <h3>Crème d'ail fumé</h3>
+          <p>Une texture crémeuse et des notes d'ail fumé pour accompagner tes plats préférés.</p>
+          <div class="product-bottom">
+            <span class="price">2,200 DT</span>
+            <button class="add" data-id="ail" aria-label="Ajouter la crème d'ail">+</button>
+          </div>
+        </div>
+      </article>
+    </div>
+    <p class="note">Les prix affichés sont des exemples : adapte-les aux prix réels de tes produits.</p>
+  </div>
+</section>
+
+<section class="story" id="histoire">
+  <div class="container story-grid">
+    <div class="story-logo">
+      <img src="saucitouna-logo.png" alt="Logo de la marque Saucitouna">
+    </div>
+    <div class="story-copy">
+      <div class="eyebrow">Notre inspiration</div>
+      <h2>De zit zitouna à Saucitouna 🫒</h2>
+      <p>
+        En Tunisie, l'huile d'olive est bien plus qu'un ingrédient :
+        elle représente notre patrimoine, nos traditions et le plaisir
+        de partager un bon repas.
+      </p>
+      <p>
+        C'est de cette inspiration qu'est née Saucitouna :
+        une marque qui veut apporter une touche originale et gourmande
+        à la cuisine de tous les jours, tout en gardant une identité tunisienne.
+      </p>
+      <p><b>Saucitouna, c'est le goût du partage avec une touche de folie !</b></p>
+      <div class="pills">
+        <span>🫒 Inspiration locale</span>
+        <span>🌶️ Des saveurs fortes</span>
+        <span>💚 Plaisir à partager</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="avis" class="reviews">
+  <div class="container">
+    <div class="heading">
+      <div class="eyebrow">La parole est à vous</div>
+      <h2>Alors, c'est comment la benna ?</h2>
+      <p>Tu as goûté nos sauces ? Partage ton expérience et donne une note sur cinq étoiles !</p>
+    </div>
+
+    <div class="review-grid">
+      <div class="rating-box">
+        <h2>Vos avis comptent ❤️</h2>
+        <div class="big-rating" id="averageRating">— / 5</div>
+        <div class="stars" id="averageStars">☆☆☆☆☆</div>
+        <p id="reviewCount">Pas encore d'avis. Sois le premier ou la première !</p>
+        <p>Ton avis nous aide à améliorer l'expérience Saucitouna.</p>
+      </div>
+
+      <div class="form-box">
+        <h3>Écrire un avis</h3>
+        <form id="reviewForm">
+          <div class="field">
+            <label for="reviewName">Ton prénom</label>
+            <input id="reviewName" maxlength="40" placeholder="Ex. Amira" required>
+          </div>
+          <div class="field">
+            <label for="reviewProduct">Le produit goûté</label>
+            <select id="reviewProduct" required>
+              <option value="">Choisir une sauce</option>
+              <option>Pesto Gourmet</option>
+              <option>Moutarde artisanale</option>
+              <option>Harissa intense</option>
+              <option>Crème d'ail fumé</option>
+              <option>La collection complète</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Ta note</label>
+            <div class="star-picker" id="starPicker">
+              <button type="button" data-rating="1" aria-label="1 étoile">★</button>
+              <button type="button" data-rating="2" aria-label="2 étoiles">★</button>
+              <button type="button" data-rating="3" aria-label="3 étoiles">★</button>
+              <button type="button" data-rating="4" aria-label="4 étoiles">★</button>
+              <button type="button" data-rating="5" aria-label="5 étoiles">★</button>
+            </div>
+          </div>
+          <div class="field">
+            <label for="reviewText">Ton commentaire</label>
+            <textarea id="reviewText" maxlength="500"
+              placeholder="La sauce parfaite avec..." required></textarea>
+          </div>
+          <button type="submit" class="btn">Publier mon avis</button>
+          <p class="note">Prototype : les avis sont conservés dans ce navigateur uniquement.</p>
+        </form>
+        <div class="review-list" id="reviewList"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="eyebrow" style="color:#f3d78d">À toi de jouer</div>
+    <h2>Ta table mérite un peu de folie !</h2>
+    <p>Découvre ta sauce préférée et ajoute une touche Saucitouna à tes repas.</p>
+    <a href="#produits" class="btn">Je découvre les sauces</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div><div class="logo" style="color:#eee8ca">SAUCITOUNA 🫒</div><small>Benna majnouna, inspiration tunisienne.</small></div>
+    <small>© <span id="year"></span> Saucitouna. Tous droits réservés.</small>
+    <small><a href="#accueil">Retour en haut ↑</a></small>
+  </div>
+</footer>
+
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-head">
+    <h3>Ton panier 🛍️</h3>
+    <button class="close-cart" id="closeCart" aria-label="Fermer">×</button>
+  </div>
+  <div id="cartItems">Ton panier est vide.</div>
+  <div class="cart-total"><span>Total estimé</span><span id="cartTotal">0,000 DT</span></div>
+  <button class="btn" id="checkout" style="width:100%">Continuer la commande</button>
+  <p class="note">Démo : aucun paiement ni commande réelle n'est envoyé.</p>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const products = {
+  pesto: {name:"Pesto Gourmet",price:2.500},
+  moutarde: {name:"Moutarde artisanale",price:2.000},
+  harissa: {name:"Harissa intense",price:1.800},
+  ail: {name:"Crème d'ail fumé",price:2.200}
+};
+
+const cart = {};
+let selectedRating = 0;
+let toastTimer;
+
+const $ = id => document.getElementById(id);
+const panel = $("cartPanel");
+
+function money(value) {
+  return value.toFixed(3).replace(".", ",") + " DT";
+}
+
+function notify(message) {
+  $("toast").textContent = message;
+  $("toast").classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => $("toast").classList.remove("show"), 2400);
+}
+
+function updateCart() {
+  const entries = Object.entries(cart);
+  const count = entries.reduce((sum, [, item]) => sum + item.qty, 0);
+  const total = entries.reduce((sum, [, item]) => sum + item.price * item.qty, 0);
+
+  $("cartCount").textContent = count;
+  $("cartTotal").textContent = money(total);
+
+  $("cartItems").innerHTML = entries.length
+    ? entries.map(([id, item]) => `
+      <div class="cart-line">
+        <span>${item.name} × ${item.qty}</span>
+        <strong>${money(item.price * item.qty)}</strong>
+        <button type="button" data-remove="${id}" aria-label="Retirer un article">−</button>
+      </div>`).join("")
+    : "Ton panier est vide.";
+
+  $("cartItems").querySelectorAll("[data-remove]").forEach(button => {
+    button.addEventListener("click", () => {
+      const id = button.dataset.remove;
+      cart[id].qty--;
+      if (cart[id].qty <= 0) delete cart[id];
+      updateCart();
+    });
+  });
+}
+
+document.querySelectorAll(".add").forEach(button => {
+  button.addEventListener("click", () => {
+    const id = button.dataset.id;
+    if (!cart[id]) cart[id] = {...products[id], qty: 0};
+    cart[id].qty++;
+    updateCart();
+    notify(products[id].name + " ajouté au panier !");
+  });
+});
+
+$("openCart").addEventListener("click", () => panel.classList.toggle("open"));
+$("closeCart").addEventListener("click", () => panel.classList.remove("open"));
+
+$("checkout").addEventListener("click", () => {
+  const items = Object.values(cart);
+  if (!items.length) {
+    notify("Ajoute d'abord une sauce à ton panier.");
+    return;
+  }
+
+  const summary = items.map(item => `${item.name} × ${item.qty}`).join("\n");
+  alert(
+    "Merci pour ton intérêt pour Saucitouna !\n\n" +
+    summary + "\n\nTotal : " + $("cartTotal").textContent +
+    "\n\nCeci est une démonstration. Aucune commande n'a été envoyée."
+  );
+});
+
+// Système de notation par étoiles
+const starButtons = [...document.querySelectorAll("#starPicker button")];
+
+starButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    selectedRating = Number(button.dataset.rating);
+    starButtons.forEach(star => {
+      star.classList.toggle(
+        "active",
+        Number(star.dataset.rating) <= selectedRating
+      );
+    });
+  });
+});
+
+// Les avis sont enregistrés dans le navigateur
+function getReviews() {
+  try {
+    return JSON.parse(localStorage.getItem("saucitounaReviews") || "[]");
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveReviews(reviews) {
+  try {
+    localStorage.setItem("saucitounaReviews", JSON.stringify(reviews));
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
+function safeText(value) {
+  const span = document.createElement("span");
+  span.textContent = value;
+  return span.innerHTML;
+}
+
+function renderReviews() {
+  const reviews = getReviews();
+  const list = $("reviewList");
+
+  if (!reviews.length) {
+    $("averageRating").textContent = "— / 5";
+    $("averageStars").textContent = "☆☆☆☆☆";
+    $("reviewCount").textContent = "Pas encore d'avis. Sois le premier ou la première !";
+    list.innerHTML = "<p class='note'>Les premiers avis apparaîtront ici.</p>";
+    return;
+  }
+
+  const average = reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length;
+
+  $("averageRating").textContent = average.toFixed(1).replace(".", ",") + " / 5";
+  $("averageStars").textContent =
+    "★".repeat(Math.round(average)) + "☆".repeat(5 - Math.round(average));
+  $("reviewCount").textContent =
+    reviews.length + " avis publié" + (reviews.length > 1 ? "s" : "");
+
+  list.innerHTML = reviews.slice().reverse().map(review => `
+    <article class="review-item">
+      <div class="review-top">
+        <strong>${safeText(review.name)} · ${safeText(review.product)}</strong>
+        <span class="stars">${"★".repeat(review.rating)}${"☆".repeat(5-review.rating)}</span>
+      </div>
+      <p>${safeText(review.comment)}</p>
+      <small>${new Date(review.date).toLocaleDateString("fr-FR")}</small>
+    </article>
+  `).join("");
+}
+
+$("reviewForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  if (selectedRating === 0) {
+    notify("Choisis une note en étoiles avant de publier.");
+    return;
+  }
+
+  const review = {
+    name: $("reviewName").value.trim(),
+    product: $("reviewProduct").value,
+    rating: selectedRating,
+    comment: $("reviewText").value.trim(),
+    date: new Date().toISOString()
+  };
+
+  if (!review.name || !review.product || !review.comment) {
+    notify("Remplis tous les champs avant de publier.");
+    return;
+  }
+
+  const reviews = getReviews();
+  reviews.push(review);
+
+  if (!saveReviews(reviews)) {
+    notify("Impossible d'enregistrer l'avis dans ce navigateur.");
+    return;
+  }
+
+  event.target.reset();
+  selectedRating = 0;
+  starButtons.forEach(star => star.classList.remove("active"));
+  renderReviews();
+  notify("Merci ! Ton avis a été publié.");
+});
+
+$("year").textContent = new Date().getFullYear();
+updateCart();
+renderReviews();
+</script>
+</body>
+</html>
